@@ -1,0 +1,16 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<ng-template [ngIf]="loading === false">
+  <agm-map *ngIf="locationsList !== undefined &&  locationsList.length" [latitude]="defaultLatitude" [longitude]="defaultLongitude">
+    <agm-marker *ngFor="let position of locationsList" [latitude]="position.latitude" [longitude]="position.longitude">
+    </agm-marker>
+  </agm-map>
+
+  <p *ngIf="locationsList !== undefined && !locationsList.length" class="alert alert-warning text-center">
+    No saved locations found!
+  </p>
+
+  <p *ngIf="error" class="alert alert-danger text-center">
+    <strong>Oops!</strong> There was an error retrieving the locations.
+  </p>
+</ng-template>
