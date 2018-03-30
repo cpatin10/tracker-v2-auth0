@@ -8,6 +8,7 @@ import { ValidateService } from './validate/validate.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -32,6 +33,7 @@ import { RecordComponent } from './pages/record/record.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FlashMessagesModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCEDqsLErpknyVKLvWrrr9XqQ4akPfT48M'
     })
