@@ -30,7 +30,7 @@ export class ApiService {
   }
 
   // POST a location linked to a specific user (login required)
-  postLocation$(location: Location): Observable<Location> {
+  postLocation$(location: LocationModel): Observable<LocationModel> {
     return this.http
       .post(`${ENV.BASE_API}record`, location, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)

@@ -15,6 +15,7 @@ export class AuthService {
     audience: AUTH_CONFIG.AUDIENCE,
     scope: AUTH_CONFIG.SCOPE
   });
+  timer: any;
   userProfile: any;
   // create a stream of logged in status to communicate throughout app
   loggedIn: boolean;
@@ -100,6 +101,7 @@ export class AuthService {
     // reset local properties, update loggedIn$ stream
     this.userProfile = undefined;
     this.setLoggedIn(false);
+    clearInterval(this.timer);
     this.router.navigate(['/']);
   }
 

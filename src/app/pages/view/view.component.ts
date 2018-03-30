@@ -12,7 +12,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 
 export class ViewComponent implements OnInit, OnDestroy {
-  pageTitle = 'Locations';
+  pageTitle = 'View Locations';
   defaultLatitude = 6.199548;
   defaultLongitude = -75.57934;
   locationsListSub: Subscription;
@@ -28,6 +28,7 @@ export class ViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
     this._getLocationsList();
+    clearInterval(this.auth.timer);
   }
 
   private _getLocationsList() {

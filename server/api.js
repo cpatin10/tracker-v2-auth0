@@ -48,7 +48,7 @@ module.exports = function (app, config) {
             longitude: req.body.longitude
         });
         newLocation.save((err) => {
-            if (err)
+            if (err) 
                 return res.status(500).send({ message: err.message });
             res.send(newLocation);
         });

@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const LocationSchema = Schema({
     userID: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     latitude: {
         type: Number,

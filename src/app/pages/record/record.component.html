@@ -1,3 +1,12 @@
-<p>
-  record works!
-</p>
+<h2 *ngIf="message" class="page-header text-center">{{message}}</h2>
+
+<app-loading *ngIf="canRecord && !latitude && !longitude"></app-loading>
+
+<div *ngIf="recording" class="text-center">
+    <p>Current Latitude: {{latitude}}
+        <br>Current Longitude: {{longitude}}</p>
+</div>
+
+<div *ngIf="recording" class="text-center">
+    <a (click)="_stopRecording()" class="btn btn-danger text-center">Stop</a>
+</div>
