@@ -32,13 +32,13 @@ export class RecordComponent implements OnInit {
     this._getLocation();
     clearInterval(this.auth.timer);
     this.auth.timer = setInterval(() => {
-      let location = new LocationModel(
+      const location = new LocationModel(
         this.auth.userProfile.sub,
         this.latitude,
         this.longitude
       );
       if (this.validate.validateLocation(location)) {
-        this.message = 'Recording location...'
+        this.message = 'Recording location...';
         this.recording = true;
         this.api
           .postLocation$(location)

@@ -1,0 +1,11 @@
+// responsive
+
+// variables
+$large: 'screen and (min-width: 768px)';
+
+// mixins
+@mixin mq($mqString) {
+    @media #{$mqString} {
+        @content;
+    }
+}
