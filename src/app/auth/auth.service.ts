@@ -55,8 +55,9 @@ export class AuthService {
         this._getProfile(authResult);
       } else if (err) {
         this._clearRedirect();
+        localStorage.setItem('authError', err.errorDescription);
+        console.error(`Authentication error: ${err.error}`);
         this.router.navigate(['/']);
-        console.error(`Error authenticating: ${err.error}`);
       }
     });
   }
@@ -69,7 +70,8 @@ export class AuthService {
         this.router.navigate([localStorage.getItem('authRedirect') || '/']);
         this._clearRedirect();
       } else if (err) {
-        console.error(`Error authenticating: ${err.error}`);
+        localStorage.setItem('authError', err.errorDescription);
+        console.error(`Authentication error: ${err.error}`);
       }
     });
   }

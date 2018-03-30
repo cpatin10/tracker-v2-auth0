@@ -3,6 +3,11 @@
     <!-- HEADER -->
     <app-header (navToggled)="navToggledHandler($event)"></app-header>
 
+    <!-- FLASH MESSAGES -->
+    <div class="container">
+      <flash-messages></flash-messages>
+    </div>
+
     <!-- CONTENT -->
     <div id="layout-view" class="layout-view">
       <router-outlet></router-outlet>

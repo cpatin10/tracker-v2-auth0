@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../core/api.service';
 import { AuthService } from '../../auth/auth.service';
 import { LocationModel } from '../../core/models/location.model';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-record',
@@ -25,7 +26,8 @@ export class RecordComponent implements OnInit {
     private title: Title,
     private api: ApiService,
     private auth: AuthService,
-    private validate: ValidateService) { }
+    private validate: ValidateService,
+    private flash: FlashMessagesService) { }
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
@@ -46,6 +48,10 @@ export class RecordComponent implements OnInit {
             res => { },
             err => {
               console.error(err);
+              this.flash.show(
+                err.errorDescription,
+                { cssClass: 'alert-danger', timeOut: 900 }
+              );
             }
           );
       }
