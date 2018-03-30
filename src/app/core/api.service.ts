@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AuthService } from './../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
 import { ENV } from './env.config';
 import { LocationModel } from './models/location.model';
+import { UserModel } from './models/user.model';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ApiService {
@@ -33,6 +34,17 @@ export class ApiService {
   postLocation$(location: LocationModel): Observable<LocationModel> {
     return this.http
       .post(`${ENV.BASE_API}record`, location, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // POST a new user (login required)
+  postUser$(user: UserModel): Observable<UserModel> {
+    return this.http
+      .post(`${ENV.BASE_API}register`, user, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(

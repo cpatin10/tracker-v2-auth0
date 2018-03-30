@@ -2,6 +2,7 @@
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const Location = require('./models/Location');
+const User = require('./models/User');
 
 
 // authentication middleware
@@ -48,9 +49,27 @@ module.exports = function (app, config) {
             longitude: req.body.longitude
         });
         newLocation.save((err) => {
-            if (err) 
+            if (err)
                 return res.status(500).send({ message: err.message });
             res.send(newLocation);
+        });
+    });
+
+    // POST a new user
+    app.post('/api/register', jwtCheck, (req, res) => {
+        User.find({ userID: req.body.userID }, (err, existingUser) => {
+            if (err)
+                return res.status(500).send({ message: err.message });
+            if (!existingUser.length) {
+                let newUser = new User({
+                    userID: req.body.userID
+                });
+                newUser.save((err) => {
+                    if (err)
+                        return res.status(500).send({ message: err.message });
+                    res.send(newUser);
+                });
+            }
         });
     });
 
