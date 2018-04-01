@@ -16,11 +16,14 @@ export class RecordComponent implements OnInit {
   pageTitle = 'Record Location';
   message: string;
   user: any;
+  lastLat: number;
+  lastLon: number;
   latitude: number;
   longitude: number;
   delay = 1000;
   canRecord = true;
   recording = false;
+  record: boolean;
 
   constructor(
     private title: Title,
@@ -30,30 +33,48 @@ export class RecordComponent implements OnInit {
     private flash: FlashMessagesService) { }
 
   ngOnInit() {
+    this.record = false;
     this.title.setTitle(this.pageTitle);
     this._getLocation();
     clearInterval(this.auth.timer);
     this.auth.timer = setInterval(() => {
-      const location = new LocationModel(
-        this.auth.userProfile.sub,
-        this.latitude,
-        this.longitude
-      );
-      if (this.validate.validateLocation(location)) {
-        this.message = 'Recording location...';
-        this.recording = true;
-        this.api
-          .postLocation$(location)
-          .subscribe(
-            res => { },
-            err => {
-              console.error(err);
-              this.flash.show(
-                err.errorDescription,
-                { cssClass: 'alert-danger', timeOut: 900 }
-              );
-            }
-          );
+      //////////
+      /* 
+        if((this.lastLat===this.latitude) && (this.lastLon===this.longitude)){
+          this.record = false;
+        }
+        else if((Math.abs(this.lastLat-this.latitude)!=0 && Math.abs(this.lastLat-this.latitude)<0.00005) 
+          || (Math.abs(this.lastLon-this.longitude)!=0 && Math.abs(this.lastLon-this.longitude)<0.00005)){
+          this.record = false;
+        }
+        else{
+          this.record = false;
+        }
+
+        this.lastLat = this.latitude;
+        this.lastLon = this.longitude;
+        //////
+        */
+        const location = new LocationModel(
+          this.auth.userProfile.sub,
+          this.latitude,
+          this.longitude
+        );
+        if (this.validate.validateLocation(location,this.record)) {
+          this.message = 'Recording location...';
+          this.recording = true;
+          this.api
+            .postLocation$(location)
+            .subscribe(
+              res => { },
+              err => {
+                console.error(err);
+                this.flash.show(
+                  err.errorDescription,
+                  { cssClass: 'alert-danger', timeOut: 900 }
+                );
+              }
+            );
       }
     }, this.delay);
   }
