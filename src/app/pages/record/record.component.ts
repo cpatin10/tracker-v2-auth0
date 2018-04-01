@@ -16,14 +16,14 @@ export class RecordComponent implements OnInit {
   pageTitle = 'Record Location';
   message: string;
   user: any;
-  lastLat: number;
-  lastLon: number;
+  lastLat: number = undefined;
+  lastLon: number = undefined;
   latitude: number;
   longitude: number;
   delay = 1000;
   canRecord = true;
   recording = false;
-  record: boolean;
+  record: boolean = true;
 
   constructor(
     private title: Title,
@@ -33,34 +33,29 @@ export class RecordComponent implements OnInit {
     private flash: FlashMessagesService) { }
 
   ngOnInit() {
-    this.record = false;
     this.title.setTitle(this.pageTitle);
     this._getLocation();
     clearInterval(this.auth.timer);
     this.auth.timer = setInterval(() => {
-      //////////
-      /* 
         if((this.lastLat===this.latitude) && (this.lastLon===this.longitude)){
           this.record = false;
         }
-        else if((Math.abs(this.lastLat-this.latitude)!=0 && Math.abs(this.lastLat-this.latitude)<0.00005) 
-          || (Math.abs(this.lastLon-this.longitude)!=0 && Math.abs(this.lastLon-this.longitude)<0.00005)){
+        else if((Math.abs(this.lastLat-this.latitude)!=0 && Math.abs(this.lastLat-this.latitude)<0.0000005) 
+          || (Math.abs(this.lastLon-this.longitude)!=0 && Math.abs(this.lastLon-this.longitude)<0.0000005)){
           this.record = false;
         }
         else{
-          this.record = false;
+          this.record = true;
         }
 
         this.lastLat = this.latitude;
         this.lastLon = this.longitude;
-        //////
-        */
         const location = new LocationModel(
           this.auth.userProfile.sub,
           this.latitude,
           this.longitude
         );
-        if (this.validate.validateLocation(location,this.record)) {
+        if (this.validate.validateLocation(location) && this.record) {
           this.message = 'Recording location...';
           this.recording = true;
           this.api
@@ -74,7 +69,7 @@ export class RecordComponent implements OnInit {
                   { cssClass: 'alert-danger', timeOut: 900 }
                 );
               }
-            );
+            ); 
       }
     }, this.delay);
   }

@@ -6,10 +6,7 @@ export class ValidateService {
 
   constructor() { }
 
-  validateLocation(location: LocationModel, record: boolean): boolean {
-    if(record===false){
-      return false;
-    }
+  validateLocation(location: LocationModel): boolean {
     if (location.latitude === undefined ||
       location.longitude === undefined ||
       location.userID === undefined) {
