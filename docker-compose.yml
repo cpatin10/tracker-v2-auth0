@@ -27,5 +27,5 @@ services:
     image: mongo # specify image to build container from
     volumes:
       - /app/server/config.js
-    # ports:
-    #   - "27017:27017" # specify port forewarding
+    ports:
+      - "27017:27017" # specify port forewarding
