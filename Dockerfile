@@ -21,3 +21,4 @@ EXPOSE 8083
 
 # Serve the app
 CMD ["node", "server"]
+
