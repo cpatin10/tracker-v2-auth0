@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: articulos-webapp-deployment
+  name: webapp-deployment
   namespace: proyecto2
 
 spec:
@@ -9,15 +9,15 @@ spec:
   template:
     metadata:
       labels:
-        app: articulos-webapp
+        app: webapp
     spec:
       containers:
-      - name: articulos-webapp
+      - name: webapp
         image: caladdd/tracker:latest
 
         ports:
         - name: nodejs-port
-          containerPort: 3000
+          containerPort: 8083
       - name: api-nginx
         image: nginx:1.13.8
         ports:

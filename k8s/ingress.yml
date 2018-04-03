@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: articulos-ingress
+  name: webapp-ingress
   namespace: proyecto2
 
   # annotations:
@@ -13,5 +13,5 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: articulos-webapp-svc
+              serviceName: webapp-svc
               servicePort: 80
