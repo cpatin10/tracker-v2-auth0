@@ -59,7 +59,7 @@ export class RecordComponent implements OnInit {
           this.message = 'Recording location...';
           this.recording = true;
           this.api
-            .postLocation$(location)
+            .postLocation2$(location)
             .subscribe(
               res => { },
               err => {
