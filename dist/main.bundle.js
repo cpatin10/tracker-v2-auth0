@@ -495,13 +495,6 @@ var ApiService = /** @class */ (function () {
         })
             .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["a" /* catchError */])(function (error) { return _this._handleError(error); }));
     };
-    // POST a location linked to a specific user (login required)
-    ApiService.prototype.postLocation2$ = function (location) {
-        var _this = this;
-        return this.http
-            .post(__WEBPACK_IMPORTED_MODULE_5__env_config__["a" /* ENV */].BASE_API + "record2", location)
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["a" /* catchError */])(function (error) { return _this._handleError(error); }));
-    };
     // POST a new user (login required)
     ApiService.prototype.postUser$ = function (user) {
         var _this = this;
@@ -906,7 +899,7 @@ var RecordComponent = /** @class */ (function () {
                 _this.message = 'Recording location...';
                 _this.recording = true;
                 _this.api
-                    .postLocation2$(location)
+                    .postLocation$(location)
                     .subscribe(function (res) { }, function (err) {
                     console.error(err);
                     _this.flash.show(err.errorDescription, { cssClass: 'alert-danger', timeOut: 900 });

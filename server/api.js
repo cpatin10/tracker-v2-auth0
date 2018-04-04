@@ -55,20 +55,6 @@ module.exports = function (app, config) {
         });
     });
 
-    // POST a location linked to a specific user
-    app.post('/api/record2', (req, res) => {
-        let newLocation = new Location({
-            userID: req.body.userID,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude
-        });
-        newLocation.save((err) => {
-            if (err)
-                return res.status(500).send({ message: err.message });
-            res.send(newLocation);
-        });
-    });
-
     // POST a new user
     app.post('/api/register', jwtCheck, (req, res) => {
         User.find({ userID: req.body.userID }, (err, existingUser) => {

@@ -41,15 +41,6 @@ export class ApiService {
       );
   }
 
-  // POST a location linked to a specific user (login required)
-  postLocation2$(location: LocationModel): Observable<LocationModel> {
-    return this.http
-      .post(`${ENV.BASE_API}record2`, location)
-      .pipe(
-        catchError((error) => this._handleError(error))
-      );
-  }
-
   // POST a new user (login required)
   postUser$(user: UserModel): Observable<UserModel> {
     return this.http
