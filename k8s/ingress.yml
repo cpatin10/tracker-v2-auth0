@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp-ingress
+  namespace: proyecto2
+
+  # annotations:
+  #   kubernetes.io/ingress.class: "tectonic"
+spec:
+  rules:
+    - host: proyecto2.dis.eafit.edu.co
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: webapp-svc
+              servicePort: 80
