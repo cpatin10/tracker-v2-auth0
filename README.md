@@ -16,6 +16,10 @@ Mateo Agudelo Toro
 
 [proyecto2.dis.eafit.edu.co](http://proyecto2.dis.eafit.edu.co/)
 
+## Theory
+
+[Go to theory](https://github.com/cpatin10/tracker-v2-auth0/blob/master/entregas/Marco%20teorico.pdf)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
