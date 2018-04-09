@@ -6,10 +6,10 @@ This app is built using Node.js and Express for the back end, Angular to create 
 
 ![alt text](https://github.com/cpatin10/tracker-v2-auth0/blob/master/entregas/TelematicaVistaArqP2.jpg)
 
-## Integrantes
+## Collaborators
 
-Catalina Patiño Forero
-Juan Pablo Calad Henao
+Catalina Patiño Forero\n
+Juan Pablo Calad Henao\n
 Mateo Agudelo Toro
 
 ## URL de ejecución pública y segura
