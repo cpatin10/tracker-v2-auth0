@@ -8,8 +8,8 @@ This app is built using Node.js and Express for the back end, Angular to create 
 
 ## Collaborators
 
-Catalina Patiño Forero\n
-Juan Pablo Calad Henao\n
+Catalina Patiño Forero<br />
+Juan Pablo Calad Henao<br />
 Mateo Agudelo Toro
 
 ## URL de ejecución pública y segura
