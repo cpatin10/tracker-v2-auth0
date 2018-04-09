@@ -12,6 +12,10 @@ Catalina Patiño Forero
 Juan Pablo Calad Henao
 Mateo Agudelo Toro
 
+## URL de ejecución pública y segura
+
+[a link](http://proyecto2.dis.eafit.edu.co/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
