@@ -14,7 +14,7 @@ Mateo Agudelo Toro
 
 ## URL de ejecución pública y segura
 
-[a link](http://proyecto2.dis.eafit.edu.co/)
+[proyecto2.dis.eafit.edu.co](http://proyecto2.dis.eafit.edu.co/)
 
 ## Development server
 
