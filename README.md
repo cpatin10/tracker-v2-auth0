@@ -4,6 +4,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This app is built using Node.js and Express for the back end, Angular to create the font end and MongoDB for data persistence. The web server is provided by NGINX. Deployment is achieve using kubernetes, and the databases are inside the following machines for persistance: 10.131.137.173, 10.131.137.193, 10.131.137.189. These machines have the 27017 port open in order to make a replica set between them.
 
+![alt text](https://github.com/cpatin10/tracker-v2-auth0/blob/master/entregas/TelematicaVistaArqP2.jpg)
+
+## Integrantes
+
+Catalina Patiño Forero
+Juan Pablo Calad Henao
+Mateo Agudelo Toro
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
